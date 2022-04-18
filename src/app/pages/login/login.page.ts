@@ -23,6 +23,9 @@ export class LoginPage implements OnInit {
   }
 
 
+
+  
+
   login() {
     //this.router.navigate(['home'])
     var url ="https://localhost:7156/Token/Login";

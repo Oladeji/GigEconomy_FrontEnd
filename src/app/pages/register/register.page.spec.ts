@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from 'oldnode_modules/@ionic/angular';
 
 import { RegisterPage } from './register.page';
 

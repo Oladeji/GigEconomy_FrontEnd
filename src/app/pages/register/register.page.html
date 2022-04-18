@@ -9,6 +9,7 @@
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="form">
 <div class="register">
 
   <ion-card>
@@ -22,33 +23,33 @@
     <ion-card-content>
       <ion-item>
         <ion-label position="floating">Surname</ion-label>
-        <ion-input></ion-input>
+        <ion-input type="text" formControlName="Surname"></ion-input>
       </ion-item>
 
 
       <ion-item>
         <ion-label position="floating">FirstName</ion-label>
-        <ion-input></ion-input>
+        <ion-input type="text" formControlName="Firstname"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Middlename</ion-label>
-        <ion-input></ion-input>
+        <ion-input type="text" formControlName="Middlename"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Email Address</ion-label>
-        <ion-input type="email"></ion-input>
+        <ion-input type="email" formControlName="Email" ></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Password</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="Password" formControlName="Password" ></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Phone No</ion-label>
-        <ion-input type="tel"></ion-input>
+        <ion-input type="tel" formControlName="PhoneNo"></ion-input>
       </ion-item>
 
 
@@ -69,9 +70,15 @@
     </ion-card-header>
   
     <ion-card-content>
+      <ion-button color="primary" (click)="takePicture()">Get Picture1 </ion-button>
       Keep close to Nature's heart... and break clear away, once in awhile,
       and climb a mountain or spend a week in the woods. Wash your spirit clean.
     </ion-card-content>
+    <ion-button color="primary" (click)="getcurrentlocation()">Get Location </ion-button>
+
+    <ion-button>
+      <ion-icon slot="icon-only" name="star"></ion-icon>
+    </ion-button>
   </ion-card>
 
   
@@ -83,13 +90,17 @@
      
     </ion-card-header>
   
-    <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
-    </ion-card-content>
+    <ion-content>
+      <ion-img [src]="imageElement"></ion-img>
+    
+      <!-- ion-fab markup  -->
+    </ion-content>
+    <ion-button color="primary" (click)="addPhotoToGallery()">Get Picture </ion-button>
+
   </ion-card>
 
-  <ion-button color ="success" shape="round" expand="full" fill="outline">Register</ion-button>
+  <ion-button color ="medium" shape="round" expand="full" (click)="RegisterClient()"fill="outline">Register</ion-button>
   
 </div>
+</form>
 </ion-content>
