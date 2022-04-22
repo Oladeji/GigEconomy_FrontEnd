@@ -2,7 +2,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import { Loc } from  "../../models/Loc" 
 
-export class RegisterClientPageForm{
+export class RegisterProviderPageForm{
 
     private formbuilder :FormBuilder
 

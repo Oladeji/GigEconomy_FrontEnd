@@ -1,0 +1,108 @@
+
+<ion-content>
+  <form [formGroup]="jobform">
+<div class="register">
+
+  <ion-card>
+    <ion-card-header>
+
+
+      <ion-card-subtitle>Detail Job Description</ion-card-subtitle>
+     
+    </ion-card-header>
+  
+    <ion-card-content>
+  <!-- Textarea with custom number of rows and cols -->
+<ion-item>
+  <ion-label>Notes</ion-label>
+  <ion-textarea formControlName="JobDescription" rows="6" cols="20" placeholder="Enter any notes here..."></ion-textarea>
+</ion-item>
+
+
+<ion-item>
+  <ion-label position="floating">Initial Budget</ion-label>
+  <ion-input type="number" formControlName="JobinitialBudget"></ion-input>
+</ion-item>
+
+
+<ion-item>
+  <ion-list>
+
+      <ion-label>
+        Required Skill Set
+      </ion-label>
+  
+    <ion-item>
+      <ion-label>Skill Type</ion-label>
+      <ion-select value=100 okText="Okay" cancelText="Dismiss"    formControlName="SkillTypeId">
+        <ion-select-option value=100>Carpenter</ion-select-option>
+        <ion-select-option value=200>Tailor</ion-select-option>
+        <ion-select-option value=3>Mechanic</ion-select-option>
+        <ion-select-option value="5">Radio Repairer</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+  </ion-list>
+</ion-item>
+
+
+      
+
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-header>
+       <ion-card-title></ion-card-title>
+
+      <ion-card-subtitle>Address Information </ion-card-subtitle>
+     
+    </ion-card-header>
+  
+    <ion-card-content>
+   
+      Keep close to Nature's heart... and break clear away, once in awhile,
+      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    </ion-card-content>
+    <ion-button color="primary" shape="round" expand="full" (click)="getcurrentlocation()">Get Location </ion-button>
+
+ 
+  </ion-card>
+
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Picture</ion-card-subtitle>
+
+   
+     
+    </ion-card-header>
+  
+    <ion-content>
+
+    
+
+  </ion-content>
+
+  <ion-button color="primary" shape="round" expand="full" (click)="takePicture()">Get Picture </ion-button>
+  </ion-card>
+
+  <ion-card color="light">
+
+    <img  *ngIf="seenimage" [src]="imageElement" width = "16px" height=auto/>
+    <ion-chip style="font-size: 12px;" color="danger">
+      <ion-label color="light">Steve</ion-label>
+    </ion-chip>
+    
+    <span class="myspan" style="font-size: 11px;">6 min ago</span>
+  
+    </ion-card>
+    
+
+
+  <ion-button color ="medium" shape="round" expand="full" (click)="postajob()"fill="outline">Register</ion-button>
+  
+</div>
+</form>
+</ion-content>

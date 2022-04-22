@@ -1,5 +1,6 @@
+import { Loc } from "./Loc";
 
-    interface  ClientRegisterDto//: ILoginDto
+export interface  ClientRegisterDto//: ILoginDto
     {
          Email: string;
          Password: string;
@@ -14,7 +15,6 @@
          Country: string;
          Image:string;
          ImageUrl: string;
-         lonx : number; 
-         laty :number  ;
+         Location:Loc;
 
 }

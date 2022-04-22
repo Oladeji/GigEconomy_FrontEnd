@@ -60,7 +60,7 @@
     </ion-card-content>
   </ion-card>
 
-  
+
   <ion-card>
     <ion-card-header>
        <ion-card-title>Address Information </ion-card-title>
@@ -70,15 +70,13 @@
     </ion-card-header>
   
     <ion-card-content>
-      <ion-button color="primary" (click)="takePicture()">Get Picture1 </ion-button>
+   
       Keep close to Nature's heart... and break clear away, once in awhile,
       and climb a mountain or spend a week in the woods. Wash your spirit clean.
     </ion-card-content>
-    <ion-button color="primary" (click)="getcurrentlocation()">Get Location </ion-button>
+    <ion-button color="primary" shape="round" expand="full" (click)="getcurrentlocation()">Get Location </ion-button>
 
-    <ion-button>
-      <ion-icon slot="icon-only" name="star"></ion-icon>
-    </ion-button>
+ 
   </ion-card>
 
   
@@ -86,17 +84,17 @@
     <ion-card-header>
        <ion-card-title>Picture</ion-card-title>
 
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+   
      
     </ion-card-header>
   
     <ion-content>
-      <ion-img [src]="imageElement"></ion-img>
-    
-      <!-- ion-fab markup  -->
-    </ion-content>
-    <ion-button color="primary" (click)="addPhotoToGallery()">Get Picture </ion-button>
 
+    
+
+  </ion-content>
+
+  <ion-button color="primary" shape="round" expand="full" (click)="takePicture()">Get Picture </ion-button>
   </ion-card>
 
   <ion-button color ="medium" shape="round" expand="full" (click)="RegisterClient()"fill="outline">Register</ion-button>

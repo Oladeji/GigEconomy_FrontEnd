@@ -1,52 +1,49 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup,FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RegisterClientPageForm } from './register.page.form';
+import { AlertController } from '@ionic/angular';
+
+import { PostAJobPageForm } from './postajob.page.form';
 import { Geolocation } from 'oldnode_modules/@awesome-cordova-plugins/geolocation/ngx';
 import { Camera, CameraResultType } from '@capacitor/camera';
-
-import { Loc } from 'src/app/models/Loc';
-import { AlertController } from '@ionic/angular';
 import { Defaultvalue } from 'src/app/models/defaults';
-//import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Loc } from 'src/app/models/Loc';
+import { MystorageService } from 'src/app/services/mystorage.service';
+import { Json_Up_Down } from 'src/app/services/httpoptions';
+
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.page.html',
-  styleUrls: ['./register.page.scss'],
+  selector: 'app-postajob',
+  templateUrl: './postajob.page.html',
+  styleUrls: ['./postajob.page.scss'],
 })
-
-export class RegisterPage implements OnInit {
-
-
-  public form : FormGroup;
-
-  //  options: CameraOptions = {
-  //   quality: 100,
-  //   destinationType: this.camera.DestinationType.FILE_URI,
-  //   encodingType: this.camera.EncodingType.JPEG,
-  //   mediaType: this.camera.MediaType.PICTURE
-  // }
+export class PostajobPage implements OnInit {
+  public jobform : FormGroup;
   base64Image: string;
   imageElement: any;
   imageUrl: string;
+  Image: any;
+  seenimage: boolean=false;
 
   constructor (private router :Router, private formbuilder :FormBuilder,
      private http:HttpClient,private geolocation: Geolocation,
-    private alertController: AlertController
+    private alertController: AlertController, private storageService :MystorageService
    ){
     
   }
 
+
+  
   ngOnInit() {
-  this.form = new RegisterClientPageForm(this.formbuilder).createForm();
+    this.jobform = new PostAJobPageForm (this.formbuilder).createForm();
   }
-  showAlert() {
+
+  showAlert(msg) {
 
     this.alertController.create({
       header: 'Alert',
       subHeader: 'Congratulations',
-      message: this.form.value.Firstname +'  Successfully Registered',
+      message: msg,
       buttons: ['OK']
     }).then(res => {
 
@@ -55,34 +52,41 @@ export class RegisterPage implements OnInit {
     });
 
   }
-  RegisterClient()
+
+  postajob()
 
   {
-   // headers = new HttpHeaders({ 'Content-Type': 'application/json'})
-    const headers = {  'Content-Type': 'application/json'}
-    this.form.get("Image").patchValue(this.base64Image);
-    const body=JSON.stringify(this.form.value);
- 
-    console.table(body)
- 
-    //this.form.get("'Location.laty'").patchValue(postion.coords.latitude);
+    var formData = new FormData();
 
-    console.table(this.form.value);
-     var url= Defaultvalue.baseUrl+ Defaultvalue.registernewClient;
-    // url="https://localhost:7156/Client/SampleGetDistanceBtwPoints";
-    this.http.post(url,body,{headers:headers}).subscribe(
-      x=>{
+     this.storageService.Findkey("token").then(token=>{
+      var x =token.value 
       console.log(x)
-      this.showAlert()
-    })
+      const headers = {  'Authorization':x ,'Content-Type': 'application/json'} // this.jobform.get("imageUrl").patchValue(this.imageUrl);
+
+
+      const body=JSON.stringify(this.jobform.value);
+
+       console.table(token)
+       console.table(headers)
+        var url= Defaultvalue.baseUrl+ Defaultvalue.postajob;
+       
+       this.http.post(url,body,{headers:headers}).subscribe(
+       
+          (x:any)=>{
+          var xx= x
+         this.showAlert(xx.message)
+        })
+    });
+
+
   }
+ 
 
   getcurrentlocation(){this.geolocation.getCurrentPosition().then(postion=>{
     console.table(postion)
-
     var  newloc =new Loc(postion.coords.longitude,postion.coords.latitude);
-    this.form.get("Location").patchValue(newloc);
-    console.table(this.form.value)
+    this.jobform.get("Location").patchValue(newloc);
+    console.table(this.jobform.value)
 
   });
 
@@ -126,11 +130,9 @@ export class RegisterPage implements OnInit {
   //this .imageElement.src = image;
   //this. base64Image = await this.convertTobase64(image);
   this. base64Image =  image.base64String;
-    
-  console.log( this. base64Image)
-  console.log("done....")
-  this.form.patchValue({"Image":this. base64Image});
-  console.log(this.form.value)
+  
+  this.jobform.patchValue({"Image":this. base64Image});
+
 };
 
  
@@ -139,40 +141,29 @@ export class RegisterPage implements OnInit {
       quality: 90,
       allowEditing: true,
      // resultType: CameraResultType.Uri
-      resultType: CameraResultType.Uri
+      resultType: CameraResultType.DataUrl
     });
   // image.webPath will contain a path that can be set as an image src.
   // You can access the original file using image.path, which can be
   // passed to the Filesystem API to read the raw data of the image,
   // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
    this.imageUrl = image.webPath;
+   this. Image=image
 
   // Can be set to the src of an image now
-  //this .imageElement.src = image;
-  this. base64Image = await this.convertTobase64(image);
+  this .imageElement =image.webPath; ;
+ this.seenimage=true
   //this. base64Image = 'data:image/jpeg;base64,' + image.base64String;
     
-  console.log( this. base64Image)
+  console.log( this.imageUrl )
+  console.log( this.Image )
   console.log("done....")
-  this.form.patchValue({"Image":this. base64Image});
+  this.jobform.patchValue({"Image":this. imageUrl});
 };
-async convertTobase64(capturedPhoto: any)
-{
-    
-
-  //return await  'data:image/jpeg;base64,' +  this.convertBlobToBase64(capturedPhoto);
-  return await  '' +  this.convertBlobToBase64(capturedPhoto);
-}
 
 
-private convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
-  const reader = new FileReader();
-  reader.onerror = reject;
-  reader.onload = () => {
-      resolve(reader.result);
-  };
-  reader.readAsDataURL(blob);
-});
+
+
 
 addPhotoToGallery() {
  // this.photoService.addNewToGallery();

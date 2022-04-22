@@ -1,0 +1,14 @@
+<ion-card color="light">
+<img src="https://serveradminrgdiag192.blob.core.windows.net/uweigppics/cb68c047-1225-4598-b721-a83c0a4bbd1b.jpg" width = "16px" height=auto/>
+<ion-chip style="font-size: 12px;" color="danger">
+  <ion-label color="light">Steve</ion-label>
+</ion-chip>
+
+<span class="myspan" style="font-size: 11px;">6 min ago</span>
+<ion-button color="primary" (click)="takePicture()">Get Picture2 </ion-button>
+</ion-card>
+
+
+<ion-button>
+<ion-icon slot="icon-only" name="star"></ion-icon>
+</ion-button>
