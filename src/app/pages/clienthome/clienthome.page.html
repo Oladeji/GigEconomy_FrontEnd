@@ -1,13 +1,17 @@
 
 <ion-card color="light">
   <ion-card-header>
-    <ion-card-title>Welcome, Ahmed</ion-card-title>
+    <ion-card-title>Welcome,   {{data.username}}</ion-card-title>
 
    <ion-card-subtitle>Date: 7th May 2:30</ion-card-subtitle>
   
  </ion-card-header>
  <div class ="center" >
-  <img src="https://serveradminrgdiag192.blob.core.windows.net/uweigppics/cb68c047-1225-4598-b721-a83c0a4bbd1b.jpg" width = "80px" height=auto/>
+<div *ngIf="data.imageUrl">
+  <img [src]="data.imageUrl" width = "160px" height=auto/>
+ 
+
+</div>
 </div>
   <ion-card-content>
  

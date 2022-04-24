@@ -32,16 +32,16 @@
         Required Skill Set
       </ion-label>
   
-    <ion-item>
-      <ion-label>Skill Type</ion-label>
-      <ion-select value=100 okText="Okay" cancelText="Dismiss"    formControlName="SkillTypeId">
-        <ion-select-option value=100>Carpenter</ion-select-option>
-        <ion-select-option value=200>Tailor</ion-select-option>
-        <ion-select-option value=3>Mechanic</ion-select-option>
-        <ion-select-option value="5">Radio Repairer</ion-select-option>
-      </ion-select>
-    </ion-item>
+      <ion-item>
+        <ion-label>Skill Type</ion-label>
+        <ion-select value=100 okText="Okay" cancelText="Dismiss"    formControlName="SkillTypeId">
+          <ion-select-option *ngFor="let sk of skill.AllSkills" [value]="sk.skillid">{{sk.skillname}}:: {{sk.description}}</ion-select-option>
+
+        </ion-select>
+      </ion-item>
   
+
+
   </ion-list>
 </ion-item>
 

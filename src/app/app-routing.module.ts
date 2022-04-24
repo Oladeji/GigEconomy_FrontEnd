@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { ClienthomePage } from './pages/clienthome/clienthome.page';
+//import { ClienthomePage } from './pages/clienthome/clienthome.page';
 
 const routes: Routes = [
   {
@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+    loadChildren: () => import('./pages/registerclient/register.module').then( m => m.RegisterPageModule)
   },
   {
     path: 'home',

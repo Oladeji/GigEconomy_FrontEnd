@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PostajobPageRoutingModule } from './postajob-routing.module';
 
 import { PostajobPage } from './postajob.page';
-import { Geolocation } from 'oldnode_modules/@awesome-cordova-plugins/geolocation/ngx';
+import { Geolocation } from 'node_modules/@awesome-cordova-plugins/geolocation/ngx';
 @NgModule({
   imports: [
     CommonModule,

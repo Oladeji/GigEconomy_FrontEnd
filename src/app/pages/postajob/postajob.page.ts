@@ -5,12 +5,13 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
 import { PostAJobPageForm } from './postajob.page.form';
-import { Geolocation } from 'oldnode_modules/@awesome-cordova-plugins/geolocation/ngx';
+import { Geolocation } from 'node_modules/@awesome-cordova-plugins/geolocation/ngx';
 import { Camera, CameraResultType } from '@capacitor/camera';
 import { Defaultvalue } from 'src/app/models/defaults';
 import { Loc } from 'src/app/models/Loc';
 import { MystorageService } from 'src/app/services/mystorage.service';
 import { Json_Up_Down } from 'src/app/services/httpoptions';
+import { availableclass } from 'src/app/models/avallableskilltypes';
 
 @Component({
   selector: 'app-postajob',
@@ -24,7 +25,7 @@ export class PostajobPage implements OnInit {
   imageUrl: string;
   Image: any;
   seenimage: boolean=false;
-
+  skill= new availableclass();
   constructor (private router :Router, private formbuilder :FormBuilder,
      private http:HttpClient,private geolocation: Geolocation,
     private alertController: AlertController, private storageService :MystorageService

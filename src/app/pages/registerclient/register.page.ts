@@ -3,12 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterClientPageForm } from './register.page.form';
-import { Geolocation } from 'oldnode_modules/@awesome-cordova-plugins/geolocation/ngx';
+import { Geolocation } from 'node_modules/@awesome-cordova-plugins/geolocation/ngx';
 import { Camera, CameraResultType } from '@capacitor/camera';
 
 import { Loc } from 'src/app/models/Loc';
 import { AlertController } from '@ionic/angular';
 import { Defaultvalue } from 'src/app/models/defaults';
+import { MystorageService } from 'src/app/services/mystorage.service';
 //import { Geolocation } from '@ionic-native/geolocation/ngx';
 @Component({
   selector: 'app-register',
@@ -33,7 +34,7 @@ export class RegisterPage implements OnInit {
 
   constructor (private router :Router, private formbuilder :FormBuilder,
      private http:HttpClient,private geolocation: Geolocation,
-    private alertController: AlertController
+    private alertController: AlertController ,private storageService: MystorageService
    ){
     
   }
@@ -71,9 +72,29 @@ export class RegisterPage implements OnInit {
      var url= Defaultvalue.baseUrl+ Defaultvalue.registernewClient;
     // url="https://localhost:7156/Client/SampleGetDistanceBtwPoints";
     this.http.post(url,body,{headers:headers}).subscribe(
-      x=>{
-      console.log(x)
+      (response:any)=>{
+      console.log(response)
+
       this.showAlert()
+
+      console.log(response)
+      console.log(response.token.token)
+      
+      this.storageService.Deletekey("token").then(
+        ()=>{    this.storageService.Savekey("token","Bearer "+response.token.token).then(
+        ()=>{
+  
+          if(response.usertype=="CLIENT")
+          {this.router.navigate(['/clienthome'])}
+
+          //if(response.usertype=="PROVIDER")
+         // {this.router.navigate(['/serviceproviderhome'])}
+        })
+      
+      }
+      )
+
+
     })
   }
 

@@ -71,8 +71,22 @@
   
     <ion-card-content>
    
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+      <ion-item>
+        <ion-label position="floating">Post Code</ion-label>
+        <ion-input type="text" formControlName="PostCode"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">No</ion-label>
+        <ion-input type="text" formControlName="HouseNo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Address</ion-label>
+        <ion-input type="text" formControlName="Address"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">City</ion-label>
+        <ion-input type="text" formControlName="City"></ion-input>
+      </ion-item>
     </ion-card-content>
     <ion-button color="primary" shape="round" expand="full" (click)="getcurrentlocation()">Get Location </ion-button>
 

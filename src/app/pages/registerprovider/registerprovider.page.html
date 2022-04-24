@@ -1,9 +1,136 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>registerprovider</ion-title>
+  <ion-toolbar color="success">
+
+    <ion-buttons slot="start">
+      <ion-back-button title=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register Service Provider</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="providerform">
+<div class="register">
 
+  <ion-card>
+    <ion-card-header>
+       <ion-card-title>Contact</ion-card-title>
+
+      <ion-card-subtitle>Enter the following to register</ion-card-subtitle>
+     
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Surname</ion-label>
+        <ion-input type="text" formControlName="Surname"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating">FirstName</ion-label>
+        <ion-input type="text" formControlName="Firstname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Middlename</ion-label>
+        <ion-input type="text" formControlName="Middlename"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Email Address</ion-label>
+        <ion-input type="email" formControlName="Email" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="Password" formControlName="Password" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Phone No</ion-label>
+        <ion-input type="tel" formControlName="PhoneNo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Aka</ion-label>
+        <ion-input type="text" formControlName="Petname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating"> MissionStatement</ion-label>
+        <ion-input type="text" formControlName="MissionStatement"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Alternative Phone</ion-label>
+        <ion-input type="tel" formControlName="AlternatePhoneNo"></ion-input>
+      </ion-item>
+
+
+
+
+      <ion-item>
+        <ion-label>Skill Type</ion-label>
+        <ion-select value=100 okText="Okay" cancelText="Dismiss"    formControlName="SkillTypeId">
+          <ion-select-option *ngFor="let sk of skill.AllSkills" [value]="sk.skillid">{{sk.skillname}}:: {{sk.description}}</ion-select-option>
+
+        </ion-select>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-header>
+       <ion-card-title>Address Information </ion-card-title>
+
+      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+     
+    </ion-card-header>
+  
+    <ion-card-content>
+   
+      <ion-item>
+        <ion-label position="floating">Post Code</ion-label>
+        <ion-input type="text" formControlName="PostCode"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">No</ion-label>
+        <ion-input type="text" formControlName="HouseNo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Address</ion-label>
+        <ion-input type="text" formControlName="Address"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">City</ion-label>
+        <ion-input type="text" formControlName="City"></ion-input>
+      </ion-item>
+    </ion-card-content>
+    <ion-button color="primary" shape="round" expand="full" (click)="getcurrentlocation()">Get Location </ion-button>
+
+ 
+  </ion-card>
+
+  
+  <ion-card>
+    <ion-card-header>
+       <ion-card-title>Picture</ion-card-title>
+
+   
+     
+    </ion-card-header>
+  
+    <ion-content>
+
+    
+
+  </ion-content>
+
+  <ion-button color="primary" shape="round" expand="full" (click)="takePicture()">Get Picture </ion-button>
+  </ion-card>
+
+  <ion-button color ="medium" shape="round" expand="full" (click)="RegisterProvider()"fill="outline">Register</ion-button>
+  
+</div>
+</form>
 </ion-content>

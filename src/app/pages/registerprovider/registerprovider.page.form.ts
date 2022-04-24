@@ -31,9 +31,11 @@ export class RegisterProviderPageForm{
             Image:['1',[Validators.required]],
             ImageUrl: ['1',[Validators.required]],
             Location : this.formbuilder.group(new Loc(0,0)),
-            //laty :['1',[Validators.required]],
-           // "Location.lonx":[7777],
-           // "Location.laty":[1234]
+            Petname:['1',[Validators.required]],
+            MissionStatement : ['1',[Validators.required]],
+            AlternatePhoneNo : ['1',[Validators.required]],
+            SkillTypeId: 0,
+
         });
     }
 }

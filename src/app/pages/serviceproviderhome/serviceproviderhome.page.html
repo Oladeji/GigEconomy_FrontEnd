@@ -1,9 +1,52 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>serviceproviderhome</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
+<ion-card color="light">
+  <ion-card-header>
+    <ion-card-title>Welcome,   {{data.username}}</ion-card-title>
 
-</ion-content>
+   <ion-card-subtitle>Date: 7th May 2:30</ion-card-subtitle>
+  
+ </ion-card-header>
+ <div class ="center" >
+<div *ngIf="data.imageUrl">
+  <img [src]="data.imageUrl" width = "160px" height=auto/>
+ 
+
+</div>
+</div>
+  <ion-card-content>
+ 
+    Keep close to Nature's heart... and break clear away, once in awhile,
+    and climb a mountain or spend a week in the woods. Wash your spirit clean.
+  </ion-card-content>
+
+
+  </ion-card>
+  
+
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="schedule">
+      <ion-icon name="calendar"></ion-icon>
+      <ion-label>Finance</ion-label>
+      <ion-badge>6</ion-badge>
+    </ion-tab-button>
+
+    <ion-tab-button tab="postajob">
+      <ion-icon name="person-circle"></ion-icon>
+      <ion-label>Add</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="viewmypostedjobs">
+      <ion-icon name="map"></ion-icon>
+      <ion-label>View</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="about">
+      <ion-icon name="information-circle"></ion-icon>
+      <ion-label>Rate</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+
+
+

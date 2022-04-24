@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { LoginPageForm } from './login.page.form';
 import { HttpClient } from '@angular/common/http';
 import {MystorageService} from '../../services/mystorage.service'
@@ -21,10 +21,6 @@ export class LoginPage implements OnInit {
 
 
 
-
-
-  
-
   login() {
     //this.router.navigate(['home'])
     var url ="https://localhost:7156/Token/Login";
@@ -38,14 +34,21 @@ export class LoginPage implements OnInit {
     var x= response;
     console.log(response)
     console.log(x.token.token)
+
     this.storageService.Deletekey("token").then(
       ()=>{    this.storageService.Savekey("token","Bearer "+response.token.token).then(
       ()=>{
 
+        let navigationExtras: NavigationExtras = {
+          queryParams: {
+            special: JSON.stringify(response)
+          }
+        };
+
         if(response.usertype=="CLIENT")
-        {this.router.navigate(['/clienthome'])}
+        {this.router.navigate(['/clienthome'],navigationExtras)}
         if(response.usertype=="PROVIDER")
-        {this.router.navigate(['/serviceproviderhome'])}
+        {this.router.navigate(['/serviceproviderhome'],navigationExtras)}
       })
     
     }
