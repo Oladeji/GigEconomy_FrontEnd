@@ -29,7 +29,8 @@ npm-debug.log*
 /node_modules
 /oldnode_modules
 /deleteios
-
+/ios
+/android
 /platforms
 /plugins
 /www

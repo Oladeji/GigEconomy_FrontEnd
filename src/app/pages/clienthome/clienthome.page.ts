@@ -15,6 +15,8 @@ export class ClienthomePage implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) {
     this.route.queryParams.subscribe((params:any) => {
      // if (params && params.special) {
+      console.log("Inside Client home b4")
+      console.table(   params)
       this.data = JSON.parse(params.special);
      
      // }

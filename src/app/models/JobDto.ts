@@ -1,6 +1,6 @@
 import { Loc } from "./Loc";
 
-export class AJobDto {
+export class JobDto {
     public JobDescription: string;
 
     public SkillTypeId: number;

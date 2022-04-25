@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 import { Geolocation } from 'node_modules/@awesome-cordova-plugins/geolocation/ngx';
 //import { Geolocation } from '../../../../../GigEcoApp copy/oldnode_modules/@awesome-cordova-plugins/geolocation/ngx';
@@ -59,6 +59,7 @@ export class RegisterproviderPage implements OnInit {
     });
 
   }
+
   RegisterProvider() {
     const headers = { 'Content-Type': 'application/json' }
     this.providerform.get("Image").patchValue(this.base64Image);
@@ -80,11 +81,15 @@ export class RegisterproviderPage implements OnInit {
           ()=>{    this.storageService.Savekey("token","Bearer "+response.token.token).then(
           ()=>{
     
-           // if(response.usertype=="CLIENT")
-           // {this.router.navigate(['/clienthome'])}
-  
+          
+              let navigationExtras: NavigationExtras = {
+                queryParams: {
+                  special: JSON.stringify(response)
+                }
+              };
+              this.router.navigate(['details'], navigationExtras);
             if(response.usertype=="PROVIDER")
-            {this.router.navigate(['/serviceproviderhome'])}
+            {this.router.navigate(['/serviceproviderhome'],navigationExtras)}
           })
         
         }

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { RegisterClientPageForm } from './register.page.form';
 import { Geolocation } from 'node_modules/@awesome-cordova-plugins/geolocation/ngx';
 import { Camera, CameraResultType } from '@capacitor/camera';
@@ -84,8 +84,14 @@ export class RegisterPage implements OnInit {
         ()=>{    this.storageService.Savekey("token","Bearer "+response.token.token).then(
         ()=>{
   
+          let navigationExtras: NavigationExtras = {
+            queryParams: {
+              special: JSON.stringify(response)
+            }
+          };
+          this.router.navigate(['details'], navigationExtras);
           if(response.usertype=="CLIENT")
-          {this.router.navigate(['/clienthome'])}
+          {this.router.navigate(['/clienthome'],navigationExtras)}
 
           //if(response.usertype=="PROVIDER")
          // {this.router.navigate(['/serviceproviderhome'])}

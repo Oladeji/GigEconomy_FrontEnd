@@ -4,6 +4,7 @@ import { NavigationExtras, Router } from '@angular/router';
 import { LoginPageForm } from './login.page.form';
 import { HttpClient } from '@angular/common/http';
 import {MystorageService} from '../../services/mystorage.service'
+import { Defaultvalue } from 'src/app/models/defaults';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -23,7 +24,7 @@ export class LoginPage implements OnInit {
 
   login() {
     //this.router.navigate(['home'])
-    var url ="https://localhost:7156/Token/Login";
+    var url = Defaultvalue.baseUrl+Defaultvalue.login//   "https://localhost:7156/Token/Login";
     var body =
     {
       "email": this.form.value.email,
