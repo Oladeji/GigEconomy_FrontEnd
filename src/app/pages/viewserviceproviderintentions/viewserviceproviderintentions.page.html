@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>INTENTIONS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <h4 class ="keepcenter" >POSTED JOBS</h4>
+    <ion-list  *ngFor="let mydt of mydata">
+      <ion-item>
+      <ion-card color="light">
+        <ion-card-header>
+  
+  
+         <ion-grid>
+           <ion-row>
+             <ion-col>
+              Job ID:
+             </ion-col>
+             <ion-col size="8">
+              {{mydt.jobId}} 
+             </ion-col>
+      
+           </ion-row>
+           <ion-row>
+            <ion-col>
+              Description: 
+            </ion-col>
+            <ion-col size="8">
+              {{mydt.jobdescription}} 
+            </ion-col>
+     
+            </ion-row>
+  
+
+  
+         </ion-grid>
+         <small>{{mydt.jobDescription}}</small>
+  
+       </ion-card-header>
+
+
+       <div class ="keepcenter" >
+      <div *ngIf="mydt.imageUrl">
+        <img [src]="mydt.imageUrl" width = "80px" height=auto/>
+       <ion-card-content>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+             Name:
+            </ion-col>
+            <ion-col size="8">
+             {{mydt.surname}} 
+            </ion-col>
+     
+          </ion-row>
+          <ion-row>
+           <ion-col>
+             Distance
+           </ion-col>
+           <ion-col size="8">
+            {{mydt.distancetojoblocation}} 
+           </ion-col>
+    
+           </ion-row>
+           <ion-row>
+            <ion-col>
+              PhoneNo
+            </ion-col>
+            <ion-col size="8">
+             {{mydt.phoneNo}} 
+            </ion-col>
+     
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Email
+              </ion-col>
+              <ion-col size="8">
+               {{mydt.email}} 
+              </ion-col>
+       
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  Rating
+                </ion-col>
+                <ion-col size="8">
+                 *****
+                </ion-col>
+         
+                </ion-row>
+        </ion-grid>    
+       </ion-card-content>
+      
+      </div>
+      </div>
+     
+
+        </ion-card>
+      </ion-item>
+      </ion-list>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+

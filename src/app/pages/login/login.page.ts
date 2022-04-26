@@ -5,6 +5,7 @@ import { LoginPageForm } from './login.page.form';
 import { HttpClient } from '@angular/common/http';
 import {MystorageService} from '../../services/mystorage.service'
 import { Defaultvalue } from 'src/app/models/defaults';
+import { LoggeduserinfoService } from 'src/app/services/loggeduserinfo.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -14,7 +15,12 @@ export class LoginPage implements OnInit {
 
 
   form : FormGroup;
-  constructor (private router :Router, private formbuilder :FormBuilder, private http:HttpClient,private storageService :MystorageService){
+
+  constructor (private router :Router, 
+    private formbuilder :FormBuilder, 
+    private http:HttpClient,
+    private loggedinservice :LoggeduserinfoService,
+    private storageService :MystorageService){
       this.form = new LoginPageForm(this.formbuilder).createForm();
 
   }
@@ -40,16 +46,18 @@ export class LoginPage implements OnInit {
       ()=>{    this.storageService.Savekey("token","Bearer "+response.token.token).then(
       ()=>{
 
-        let navigationExtras: NavigationExtras = {
-          queryParams: {
-            special: JSON.stringify(response)
-          }
-        };
+        // let navigationExtras: NavigationExtras = {
+        //   queryParams: {
+        //     special: JSON.stringify(response)
+        //   }
+        // };
+
+        this.loggedinservice.AddUserInfo(response)
 
         if(response.usertype=="CLIENT")
-        {this.router.navigate(['/clienthome'],navigationExtras)}
+        {this.router.navigate(['/clienthome'])}
         if(response.usertype=="PROVIDER")
-        {this.router.navigate(['/serviceproviderhome'],navigationExtras)}
+        {this.router.navigate(['/serviceproviderhome'])}
       })
     
     }

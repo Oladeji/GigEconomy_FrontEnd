@@ -7,7 +7,7 @@ export class availableclass {
 
 
   public AllSkills = [
-      {skillid: 100, skillname: 'Capenter',description:'dbfljlfblajkfbllkjfblkjfbklrjfbrljfberljkf'},
+      {skillid: 100, skillname: 'Capenter',description:'Wood works and joining...'},
       {skillid: 200, skillname: 'Driver',description:'dbfljlfblajkfbllkjfblkjfbklrjfbrljfberljkf'},
       {skillid: 300, skillname: 'Electrician',description:'dbfljlfblajkfbllkjfblkjfbklrjfbrljfberljkf'},
       {skillid: 400, skillname: 'Transporter',description:'dbfljlfblajkfbllkjfblkjfbklrjfbrljfberljkf'},

@@ -14,6 +14,7 @@ import { Defaultvalue } from 'src/app/models/defaults';
 import { RegisterProviderPageForm } from './registerprovider.page.form';
 import { MystorageService } from 'src/app/services/mystorage.service';
 import { availableclass } from 'src/app/models/avallableskilltypes';
+import { LoggeduserinfoService } from 'src/app/services/loggeduserinfo.service';
 //import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
@@ -37,7 +38,8 @@ export class RegisterproviderPage implements OnInit {
   skill= new availableclass();
   constructor(private router: Router, private formbuilder: FormBuilder,
     private http: HttpClient, private geolocation: Geolocation,
-    private alertController: AlertController, private storageService :MystorageService
+    private alertController: AlertController, private storageService :MystorageService,
+    private loggedinservice: LoggeduserinfoService
   ) {
 
   }
@@ -82,14 +84,14 @@ export class RegisterproviderPage implements OnInit {
           ()=>{
     
           
-              let navigationExtras: NavigationExtras = {
-                queryParams: {
-                  special: JSON.stringify(response)
-                }
-              };
-              this.router.navigate(['details'], navigationExtras);
+              // let navigationExtras: NavigationExtras = {
+              //   queryParams: {
+              //     special: JSON.stringify(response)
+              //   }
+              // };
+              this.loggedinservice.AddUserInfo(response)
             if(response.usertype=="PROVIDER")
-            {this.router.navigate(['/serviceproviderhome'],navigationExtras)}
+            {this.router.navigate(['/serviceproviderhome'])}
           })
         
         }

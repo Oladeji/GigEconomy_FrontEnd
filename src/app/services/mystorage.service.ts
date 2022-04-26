@@ -16,7 +16,7 @@ export class MystorageService {
  //  console.log(x) 
  //  console.log(p)          
   }
- public Deletekey = async(key)=>      { await Storage.remove(key);}
+ public Deletekey = async(key)=>      { await Storage.remove({ key: key });}
  
 //  public async Findkey2(key)
 //  {

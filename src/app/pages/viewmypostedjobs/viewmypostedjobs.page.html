@@ -1,9 +1,73 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>viewmypostedjobs</ion-title>
+    <ion-title>My Jobs</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-helooooooo
+  <ion-card color="light">
+    <ion-card-header>
+      <ion-card-title class ="keepcenter" >Welcome,  </ion-card-title>
+    
+   </ion-card-header>
+   <div class ="keepcenter" >
+  <div *ngIf="data.imageUrl">
+    <img [src]="data.imageUrl" width = "160px" height=auto/>
+   
+  
+  </div>
+  </div>
+    <ion-card-content>
+   
+     Brief Intro..
+  
+    </ion-card-content>
+  
+  
+    </ion-card>
+    <h4 class ="keepcenter" >POSTED JOBS</h4>
+    <ion-list  *ngFor="let mydt of mydata">
+      <ion-item>
+      <ion-card color="light">
+        <ion-card-header>
+  
+  
+         <ion-grid>
+           <ion-row>
+             <ion-col>
+              Job ID:
+             </ion-col>
+             <ion-col size="8">
+              {{mydt.jobBoardId}} 
+             </ion-col>
+      
+           </ion-row>
+           <ion-row>
+            <ion-col>
+              Posted Date: 
+            </ion-col>
+            <ion-col size="8">
+              {{mydt.postedDate}} 
+            </ion-col>
+     
+          </ion-row>
+  
+
+  
+         </ion-grid>
+         <small>{{mydt.jobDescription}}</small>
+  
+       </ion-card-header>
+       <div class ="keepcenter" >
+      <div *ngIf="mydt.imageUrl">
+        <img [src]="mydt.imageUrl" width = "160px" height=auto/>
+       
+      
+      </div>
+      </div>
+     
+
+        </ion-card>
+      </ion-item>
+      </ion-list>
 </ion-content>

@@ -8,25 +8,25 @@ const routes: Routes = [
     path: '',
     component: ClienthomePage,
 
-      children:[{
-        path:'postajob',
-          // loadChildren: () => import('./pages/clienthome/clienthome.module').then( m => m.ClienthomePageModule)
-           loadChildren: () => import('../../pages/postajob/postajob.module').then( m => m.PostajobPageModule)
+    children: [
+          {
+            path: 'postajob',
+            // loadChildren: () => import('./pages/clienthome/clienthome.module').then( m => m.ClienthomePageModule)
+            loadChildren: () => import('../../pages/postajob/postajob.module').then(m => m.PostajobPageModule)
           }
-          ,
-    {
-      path: 'viewmypostedjobs',
-      loadChildren: () => import('../../pages/viewmypostedjobs/viewmypostedjobs.module').then( m => m.ViewmypostedjobsPageModule)
-    //  loadChildren: () => import('./pages/viewmypostedjobs/viewmypostedjobs.module').then( m => m.ViewmypostedjobsPageModule)
+            ,
+          {
+            path: 'viewmypostedjobs',
+            loadChildren: () => import('../../pages/viewmypostedjobs/viewmypostedjobs.module').then(m => m.ViewmypostedjobsPageModule)
+            //  loadChildren: () => import('./pages/viewmypostedjobs/viewmypostedjobs.module').then( m => m.ViewmypostedjobsPageModule)
 
-    }
-       ]
-  
-
-
-
-
-
+          }
+            ,
+          {
+            path: 'viewserviceproviderintentions',
+            loadChildren: () => import('../../pages/viewserviceproviderintentions/viewserviceproviderintentions.module').then(m => m.ViewserviceproviderintentionsPageModule)
+          }
+    ]
 
 
 
@@ -37,4 +37,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ClienthomePageRoutingModule {}
+export class ClienthomePageRoutingModule { }

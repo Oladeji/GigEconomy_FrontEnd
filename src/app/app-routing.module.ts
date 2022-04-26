@@ -25,10 +25,7 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
-  {
-    path: 'dispayalert',
-    loadChildren: () => import('./pages/dispayalert/dispayalert.module').then( m => m.DispayalertPageModule)
-  },
+
   {
     path: 'registerprovider',
     loadChildren: () => import('./pages/registerprovider/registerprovider.module').then( m => m.RegisterproviderPageModule)

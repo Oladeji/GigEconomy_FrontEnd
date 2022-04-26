@@ -19,7 +19,7 @@ export class RegisterClientPageForm{
 
             Email: ['Akomspatrick@yahoo.com',[Validators.required]],
             Password: ['1',[Validators.required]],
-            Surname: ['Akoms',[Validators.required]],
+            Surname: ['Akomolafe',[Validators.required]],
             Middlename: ['1',[Validators.required]],
             Firstname:['sss',[Validators.required]],
             PhoneNo: ['1',[Validators.required]],

@@ -10,6 +10,7 @@ import { Loc } from 'src/app/models/Loc';
 import { AlertController } from '@ionic/angular';
 import { Defaultvalue } from 'src/app/models/defaults';
 import { MystorageService } from 'src/app/services/mystorage.service';
+import { LoggeduserinfoService } from 'src/app/services/loggeduserinfo.service';
 //import { Geolocation } from '@ionic-native/geolocation/ngx';
 @Component({
   selector: 'app-register',
@@ -34,7 +35,8 @@ export class RegisterPage implements OnInit {
 
   constructor (private router :Router, private formbuilder :FormBuilder,
      private http:HttpClient,private geolocation: Geolocation,
-    private alertController: AlertController ,private storageService: MystorageService
+    private alertController: AlertController ,private storageService: MystorageService,
+    private loggedinservice:LoggeduserinfoService
    ){
     
   }
@@ -84,14 +86,15 @@ export class RegisterPage implements OnInit {
         ()=>{    this.storageService.Savekey("token","Bearer "+response.token.token).then(
         ()=>{
   
-          let navigationExtras: NavigationExtras = {
-            queryParams: {
-              special: JSON.stringify(response)
-            }
-          };
-          this.router.navigate(['details'], navigationExtras);
+          // let navigationExtras: NavigationExtras = {
+          //   queryParams: {
+          //     special: JSON.stringify(response)
+          //   }
+          // };
+          this.loggedinservice.AddUserInfo(response)
           if(response.usertype=="CLIENT")
-          {this.router.navigate(['/clienthome'],navigationExtras)}
+          {this.router.navigate(['/clienthome'])}
+         // {this.router.navigate(['/clienthome'],navigationExtras)}
 
           //if(response.usertype=="PROVIDER")
          // {this.router.navigate(['/serviceproviderhome'])}

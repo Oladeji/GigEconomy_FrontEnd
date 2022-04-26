@@ -1,79 +1,26 @@
 <ion-content>
-<ion-card color="light">
-  <ion-card-header>
-    <ion-card-title class ="keepcenter"  *ngIf="data.username">Welcome,   {{data.username}}</ion-card-title>
-  
- </ion-card-header>
- <div class ="keepcenter" >
-<div *ngIf="data.imageUrl">
-  <img [src]="data.imageUrl" width = "160px" height=auto/>
- 
 
-</div>
-</div>
-  <ion-card-content>
- 
-   Brief Intro..
+        <ion-card color="light">
+          <ion-card-header>
+            <ion-card-title class="keepcenter" *ngIf="data.username">Welcome, {{data.username}}</ion-card-title>
 
-  </ion-card-content>
+          </ion-card-header>
+          <div class="keepcenter">
+            <div *ngIf="data.imageUrl">
+              <img [src]="data.imageUrl" width="160px" height=auto />
 
 
-  </ion-card>
-  <h4 class ="keepcenter" >AVAILABLE JOBS</h4>
-  <ion-list  *ngFor="let mydt of mydata">
-    <ion-item>
-    <ion-card color="light">
-      <ion-card-header>
+            </div>
+          </div>
+          <ion-card-content>
+
+            Brief Intro..
+
+          </ion-card-content>
 
 
-       <ion-grid>
-         <ion-row>
-           <ion-col>
-            Job ID:
-           </ion-col>
-           <ion-col size="8">
-            {{mydt.jobBoardId}} 
-           </ion-col>
-    
-         </ion-row>
-         <ion-row>
-          <ion-col>
-            Posted Date: 
-          </ion-col>
-          <ion-col size="8">
-            {{mydt.postedDate}} 
-          </ion-col>
-   
-        </ion-row>
+        </ion-card>
 
-        <ion-row>
-          <ion-col>
-            Distance : 
-          </ion-col>
-          <ion-col size="8">
-            {{mydt.distancetojoblocation}}<small>(Meters)</small>
-          </ion-col>
-   
-        </ion-row>
-
-       </ion-grid>
-       <small>{{mydt.jobDescription}}</small>
-
-     </ion-card-header>
-     <div class ="keepcenter" >
-    <div *ngIf="mydt.imageUrl">
-      <img [src]="mydt.imageUrl" width = "160px" height=auto/>
-     
-    
-    </div>
-    </div>
-   
-    
-      <ion-button color="primary" shape="round" expand="full" (click)="Apply4Job(mydt)">Apply </ion-button>
-
-      </ion-card>
-    </ion-item>
-    </ion-list>
 
 
   <ion-tabs>
@@ -81,15 +28,15 @@
       <ion-tab-button tab="schedule">
         <ion-icon name="calendar"></ion-icon>
         <ion-label>Finance</ion-label>
-        <ion-badge>6</ion-badge>
+
       </ion-tab-button>
   
-      <ion-tab-button tab="postajob">
-        <ion-icon name="person-circle"></ion-icon>
-        <ion-label>Add</ion-label>
+      <ion-tab-button tab="viewclientspostedjob">
+        <ion-icon name="bag-check"></ion-icon>
+        <ion-label>Check</ion-label>
       </ion-tab-button>
   
-      <ion-tab-button tab="viewmypostedjobs">
+      <ion-tab-button tab="viewclientapproval">
         <ion-icon name="map"></ion-icon>
         <ion-label>View</ion-label>
       </ion-tab-button>
